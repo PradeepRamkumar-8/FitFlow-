@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FitFlow</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to handle login
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get user login details
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate user login (you can replace this with actual authentication)
+            if (username && password) {
+                // Display user details on top-right after login
+                document.getElementById('user-details').innerHTML = `Logged in as: ${username}`;
+                document.getElementById('login-form').style.display = 'none'; // Hide the login form
+                document.getElementById('user-dashboard').style.display = 'block'; // Show the dashboard
+            } else {
+                alert('Please enter valid login details.');
+            }
+        }
+
+        // Function to handle event booking with pop-up confirmation
+        function bookEvent(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const eventType = document.getElementById('event-type').value;
+            const eventDate = document.getElementById('event-date').value;
+            const eventTheme = document.getElementById('theme-type').value;
+            const eventAttendees = document.getElementById('number-of-attendees').value;
+
+            // Show confirmation pop-up
+            alert(`Your ${eventType} on ${eventDate} has been successfully booked!`);
+
+            // Add event details to the user's booking history
+            document.getElementById('event-booking-details').innerHTML = `<strong>Event:</strong> ${eventType}<br><strong>Date:</strong> ${eventDate}<strong><br>Theme Type:</strong> ${eventTheme}<br><strong>Attendees Number:</strong> ${eventAttendees}<br>`;
+            document.getElementById('manage-event-booking').style.display = 'block'; // Show booking section
+        }
+
+        // Function to handle event cancellation
+        function cancelEvent() {
+            alert('Your event booking has been canceled.');
+            document.getElementById('manage-event-booking').style.display = 'none'; // Hide event booking details
+        }
+
+        // Function to handle membership management
+        function manageMembership(action) {
+            if (action === 'upgrade') {
+                alert('Your membership has been upgraded to Gold.');
+                document.getElementById('membership-status').innerHTML = 'Gold membership';
+            } else if (action === 'downgrade') {
+                alert('Your membership has been downgraded to bronze.');
+                document.getElementById('membership-status').innerHTML = 'bronze membership';
+            } else if (action === 'cancel') {
+                alert('Your membership has been canceled.');
+                document.getElementById('membership-status').innerHTML = 'No active membership';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div id="user-details" class="header-right">
+            <!-- User details will be displayed here after login -->
+        </div>
+        <div class="header-left">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="join.html">Join FitFlow</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Form Section -->
+    <section class="login-section" id="login-form">
+        <div class="login-container">
+            <h2>Login to Your FitFlow Account</h2>
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Login</button>
+                <p><a href="#">Forgot Password?</a></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- User Dashboard Section (Visible after login) -->
+    <section id="user-dashboard" style="display: none;">
+        <div class="dashboard-container">
+            <h2>User Dashboard</h2>
+
+            <!-- Event Booking Section -->
+            <div class="event-booking-section">
+                <h3>Book Your Next Event</h3>
+                <form onsubmit="bookEvent(event)">
+                    <label for="event-type">Event Type:</label>
+                    <select id="event-type" name="event-type" required>
+                        <option value="conference">Conference</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="meetup">Meetup</option>
+                    </select>
+                    <br> </br>
+                    <label for="Theme & Decoration">Theme & Decoration:</label>
+                    <select id="theme-type" name="theme-type" required>
+                        <option value="Theme1">Theme 1</option>
+                        <option value="Theme2">Theme 2</option>
+                        <option value="Theme3">Theme 3</option>
+                        <option value="Theme4">Theme 4</option>
+                    </select>
+                    <br> </br>
+                    <label for="number-of-attendees">Number of Attendees</label>
+                    <input type="number" id="number-of-attendees" name="number-of-attendees" required>
+                    <br> </br>
+
+                    <label for="event-date">Event Date:</label>
+                    <input type="date" id="event-date" name="event-date" required>
+                    <br> </br>
+                    <button type="submit">Book Event</button>
+                </form>
+            </div>
+
+            <!-- Manage Membership Section -->
+            <div class="manage-membership-section">
+                <h3>Manage Your Membership</h3>
+                <p id="membership-status">You are currently a <strong>Silver Member</strong>.</p>
+                <button onclick="manageMembership('upgrade')">Upgrade to Gold</button>
+                <button onclick="manageMembership('downgrade')">Downgrade to Bronze</button>
+                <button onclick="manageMembership('cancel')">Cancel Membership</button>
+            </div>
+
+            <!-- Manage Event Booking Section (Visible after event booking) -->
+            <div id="manage-event-booking" style="display: none;">
+                <h3>Your Event Booking</h3>
+                <p id="event-booking-details"></p>
+                <button onclick="cancelEvent()">Cancel Booking</button>
+    
+            </div>
+        </div>
+    </section>
+</body>
+</html>

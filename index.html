@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow - Event Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function confirmBooking() {
+            const fullName = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            if (fullName && email) {
+                alert(`Your booking is confirmed for ${fullName}. A mail will be sent to ${email}.`);
+            } else {
+                alert("Please fill in all the fields before booking.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="full-page-background">
+        <header>
+            <div class="header-left">
+                <h1>FITFLOW</h1>
+            </div>
+            <div class="header-right">
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="login.html">Login</a>
+                    <a href="join.html">Join FITFLOW</a>
+                    <a href="book-services.html">Book Services</a>
+
+                </nav>
+            </div>
+        </header>
+
+        <section class="main-content">
+            <div class="about-section">
+                <div class="about-content">
+                    <h2>About Us</h2>
+                    <p>
+                        FitFlow is a company intending to enter the Australian fitness services market by offering a diverse range of aquatics, health, and fitness services. Our mission is to promote active living by offering innovative health and fitness experiences for individuals and families.
+                    </p>
+                    <p>
+                        Our services and facilities include state-of-the-art gyms, aquatic services such as swimming pools, splash parks, beach entry, swimming lessons, SPA, steam rooms, saunas, personal training, and group and individual fitness classes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-booking">
+                <h2>Book Your Next Event with Us</h2>
+                <form class="booking-form" action="#" onsubmit="event.preventDefault(); confirmBooking();">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                    <label for="event">Event Type:</label>
+                    <select id="event" name="event" required>
+                        <option value="conference">Conference</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="meetup">Meetup</option>
+                        <option value="Private Party">Private Party</option>
+                    </select>
+
+                    <label for="Theme & Decoration">Theme & Decoration:</label>
+                    <select id="theme-type" name="theme-type" required>
+                        <option value="Theme1">Theme 1</option>
+                        <option value="Theme2">Theme 2</option>
+                        <option value="Theme3">Theme 3</option>
+                        <option value="Theme4">Theme 4</option>
+                    </select>
+                    
+                    <label for="number-of-attendees">Number of Attendees</label>
+                    <input type="number" id="number-of-attendees" name="number-of-attendees" required>
+                    
+
+                    <label for="date">Event Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <button type="submit">Book Now</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

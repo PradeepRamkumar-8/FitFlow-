@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join FitFlow</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to handle form submission and show a pop-up message
+        function showNotification(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the username entered by the user
+            const username = document.getElementById('username').value;
+
+            // Display a notification with the username
+            alert(`Account created! Welcome to FitFlow, ${username}.\nYou are a FitFlow member now!`);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>FITFLOW</h1>
+        </div>
+        <div class="header-right">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="join.html">Join FITFLOW</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="join-section">
+        <div class="join-container">
+            <h2>Create Your FitFlow Account</h2>
+
+            <!-- User Account Creation Form -->
+            <form class="join-form" action="#" method="post" onsubmit="showNotification(event);">
+                <!-- Account Details -->
+                <h3>Account Details</h3>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <!-- Membership Options -->
+                <h3>Choose Your Membership</h3>
+                <label>
+                    <input type="radio" name="membership" value="Gold" required>
+                    Gold - $399 per annum (30% discount)
+                </label>
+                <label>
+                    <input type="radio" name="membership" value="Silver">
+                    Silver - $299 per annum (30% discount)
+                </label>
+                <label>
+                    <input type="radio" name="membership" value="Bronze">
+                    Bronze - $199 per annum (30% discount)
+                </label>
+
+                <!-- Payment Options -->
+                <h3>Payment Information</h3>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+
+                <button type="submit">Join Now</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
